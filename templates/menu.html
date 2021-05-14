@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Lucknow Central: Menu</title>
+
+    <style>
+
+
+body
+            {
+            background-image: url('https://wallpaperaccess.com/full/1317021.jpg');
+             height: 100%;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            }
+
+        .button {
+  background-color: white;
+  border: none;
+  color: coral;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 8px;
+
+
+}
+.button3:hover {
+  background-color: white;
+  color: #4f0013;
+
+}
+    </style>
+
+</head>
+<body >
+<div style="background-color:#4f0013;height:100%;width:70%;margin: auto;">
+{% for f in Food %}
+
+    <div style="padding:20px;margin= 20px;width:50%;margin: auto;">
+
+        <h2 style="float:left;color:white;">{{ f.name }}</h2>
+        <h5 style="float:right;color:white;"> {{ f.price }}</h5>
+        <br>
+        <br>
+        <br>
+        <p style="color:white">{{ f.desc }}</p>
+
+        <form action="" method="POST" ><button style="padding:10px 20px;position: relative;left: 280px;" class="button button3"  type="submit" name="add" value="{{  f.id  }}">Add</button></form>
+
+     </div>
+    <hr size="" width="90%" color="white">
+
+{% endfor %}
+    <a href=cart><button class="button button3" style="padding:10px 20px;position: relative;left: 545px;">Check Cart</button></a>
+    <a href=home><button class="button button3" style="padding:10px 20px;position: relative;left: 555px;">Go Back</button></a>
+</div>
+
+<script>
+function addToCart(productId) {
+    fetch('/cart/productId',
+        {method: 'POST'}
+    )
+}
+</script>
+
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!--JSON-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+</body>
+</html>

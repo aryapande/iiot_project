@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Lucknow Central: Cart</title>
+
+    <style>
+
+    body
+            {
+            background-image: url('https://wallpaperaccess.com/full/1317021.jpg');
+             height: 100%;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            }
+
+        .button {
+  background-color: white;
+  border: none;
+  color: coral;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+
+  cursor: pointer;
+  border-radius: 8px;
+
+
+}
+.button3:hover {
+  background-color: white;
+  color: #4f0013;
+
+}
+    </style>
+</head>
+<body>
+
+{% set ns = namespace(total=0) %}
+<div style="background-color:#4f0013;height:100%;width:70%;margin: auto;text-align:center;">
+    <h1 style="color: white;">Cart</h1>
+<br>
+{% for f in food %}
+    <div style="padding:50px;margin= 20px;width:50%;margin: auto;">
+
+        {% set q=food[f][1] %}
+        {% set p=food[f][2] * food[f][1] %}
+        {% set ns.total = ns.total+p %}
+        <h3 style="position: absolute;left: 550px;color:white;">{{ f }}  x{{q}}</h3>
+
+        <h3 style="position: absolute;left: 1250px;color:white;"> {{ p }}</h3>
+
+        <form action="" method="POST" ><button style="position: absolute;left: 1350px;background-color: white;padding:10px;
+  "class="button button3" type="submit" name="remove" value="{{  food[f][0]  }}">Remove</button></form>
+     </div>
+{% endfor %}
+    <hr size="" width="90%" color="white">
+    <h1 style="color: white;">Taxes</h1>
+    <div style="padding:20px;margin= 20px;width:50%;margin: auto;">
+
+    <h4 style="position: absolute;left: 553px;color:white;">Service Tax(5%)</h4>
+        <h4 style="position: absolute;left: 1253px;color:white;">{{0.05*ns.total}}</h4>
+
+        <br>
+        <br>
+    <h4 style="position: absolute;left: 553px;color:white;">GST(5%)</h4>
+        <h4 style="position: absolute;left: 1253px;color:white;">{{0.05*ns.total}}</h4>
+        {% set ns.total = ns.total+0.1*ns.total %}
+    </div>
+    <br>
+    <br>
+    <hr size="" width="90%" color="white">
+<h1 style="color:white;">Total: Rs. {{ns.total}}</h1>
+<br>
+<a href=home><button class="button button3">Thank You</button></a>
+<a href=menu><button class="button button3">Go Back</button></a>
+    <div style="padding=30px"><br></div>
+    </div>
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
